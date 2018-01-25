@@ -1,5 +1,5 @@
 angular.module('todoApp', [])
-  .controller('TodoListController', function() {
+  .controller('TodoListController', ['$scope', function($scope) {
 	var todoList = this;
 	todoList.todos = [
 	  {text:'learn angular', done:true},
@@ -9,7 +9,7 @@ angular.module('todoApp', [])
 	  todoList.todos.push({text:todoList.todoText, done:false});
 	  todoList.todoText = '';
 	};
- 
+ 	
 	todoList.remaining = function() {
 	  var count = 0;
 	  angular.forEach(todoList.todos, function(todo) {
@@ -25,4 +25,4 @@ angular.module('todoApp', [])
 		if (!todo.done) todoList.todos.push(todo);
 	  });
 	};
-  });
+  }]);
